@@ -87,6 +87,17 @@ describe('question', () => {
           });
         });
       });
+      describe('when the string is a yes or no question', () => {
+        describe('when the string contains "is", "do", "does", "are" & "will"', () => {
+          it('should return a string containing "yes" or "no"', () => {
+            const yesNoRegex = /.*yes|no.*/i;
+            const input = 'Do you want to build a snowman?';
+            const output = test.subject(input);
+            const result = yesNoRegex.test(output);
+            expect(result).toBe(true);
+          });
+        });
+      });
     });
   });
 });
