@@ -66,12 +66,21 @@ describe('question', () => {
         });
       });
       describe('when the string contains for "who"', () => {
-        describe('when the string contains "who"', () => {
+        describe('when the string only contains "who"', () => {
           it('should return a string containing "is who"', () => {
             const isWhoRegex = /.*is.+who.*/i;
             const input = 'Who is this person?';
             const output = test.subject(input);
             const result = isWhoRegex.test(output);
+            expect(result).toBe(true);
+          });
+        });
+        describe('when the string also contains "favorite"', () => {
+          it('should return a string containing "my favorite"', () => {
+            const whoFavoriteRegex = /.*my.+favorite.*/i;
+            const input = 'Who is your favorite movie star?';
+            const output = test.subject(input);
+            const result = whoFavoriteRegex.test(output);
             expect(result).toBe(true);
           });
         });
