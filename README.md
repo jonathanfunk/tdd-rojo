@@ -1,5 +1,7 @@
 TDD Rojo
 ======
+![screen shot 2017-02-26 at 11 26 13 pm](https://cloud.githubusercontent.com/assets/20465505/23370295/16700098-fcc9-11e6-9c67-353c7cb5bb04.png)
+
 ## Project
 The purpose of this project is to write tests for Rojo, a bot who will answer questions like SIRI, using Test Driven Development.
 
