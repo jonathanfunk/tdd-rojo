@@ -11,7 +11,7 @@ describe('question', () => {
       const output = test.subject(input);
       expect(output).toEqual('This is not a question!');
     });
-    describe('.listen', () => {
+    describe('listening', () => {
       describe('when passed string that starts with "when"', () => {
         it('should return a string containing am or pm', () => {
           const timeRegex = /.+am|pm.*/i;
@@ -96,7 +96,7 @@ describe('question', () => {
           });
         });
         describe('when the string also contains "favorite"', () => {
-          it('should return a string containing "my favorite"', () => {
+          it('should return a string containing "my favorite place"', () => {
             const whereFavoriteRegex = /.*my.+favorite.+place*/i;
             const input = 'Where is your favorite place to study?';
             const output = test.subject(input);
