@@ -95,6 +95,15 @@ describe('question', () => {
             expect(result).toBe(true);
           });
         });
+        describe('when the string also contains "favorite"', () => {
+          it('should return a string containing "my favorite"', () => {
+            const whereFavoriteRegex = /.*my.+favorite.+place*/i;
+            const input = 'Where is your favorite place to study?';
+            const output = test.subject(input);
+            const result = whereFavoriteRegex.test(output);
+            expect(result).toBe(true);
+          });
+        });
       });
       describe('when the string is a yes or no question', () => {
         describe('when the string contains "is", "do", "does", "are" & "will"', () => {
