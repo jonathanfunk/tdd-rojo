@@ -7,18 +7,14 @@ describe('question', () => {
       test.subject = require('../lib/question');
     });
     it('should return a string "This is not a question!"', () => {
-      const input = 'Who is this person';
-      const output = test.subject(input);
+      const output = test.subject('Who is this person');
       expect(output).toEqual('This is not a question!');
     });
     describe('listening', () => {
       describe('when passed string that starts with "when"', () => {
         it('should return a string containing am or pm', () => {
-          const timeRegex = /.+am|pm.*/i;
-          const input = 'When whould we do this?';
-          const output = test.subject(input);
-          const result = timeRegex.test(output);
-          expect(result).toBe(true);
+          const output = test.subject('When whould we do this?');
+          expect(/.+am|pm.*/i.test(output)).toBe(true);
         });
       });
       describe('when passed a string that starts with "what"', () => {
