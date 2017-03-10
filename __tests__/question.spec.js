@@ -2,20 +2,25 @@ describe('question', () => {
   let test;
 
   describe('when valid values are passed', () => {
+
     beforeEach(() => {
       test = {};
       test.subject = require('../lib/question');
     });
+
     it('should return a string "This is not a question!"', () => {
       const output = test.subject('Who is this person');
       expect(output).toEqual('This is not a question!');
     });
+
     describe('listening', () => {
       describe('when passed string that starts with "when"', () => {
         it('should return a string containing am or pm', () => {
-
+          const output = test.subject('When whould we do this?');
+          expect(/.+am|pm.*/i.test(output)).toBe(true);
         });
       });
+
       describe('when passed a string that starts with "what"', () => {
         describe('when the string contains "time"', () => {
           it('should return a string containing am or pm', () => {
@@ -23,6 +28,7 @@ describe('question', () => {
             expect(/.+am|pm.*/i.test(output)).toBe(true);
           });
         });
+
         describe('when the string does not contain "time"', () => {
           describe('when the string also contains "day"', () => {
             it('should return a string cotaining a day of the week', () => {
@@ -32,6 +38,7 @@ describe('question', () => {
             });
           });
         });
+
         describe('when the string does not contain "how old"', () => {
           describe('when the string contains "age" ', () => {
             it('should return a string containing a number', () => {
@@ -41,6 +48,7 @@ describe('question', () => {
           });
         });
       });
+
       describe('when the string does not contain "age"', () => {
         describe('when the string contains "how old" ', () => {
           it('should return a string containing a number', () => {
@@ -49,6 +57,7 @@ describe('question', () => {
           });
         });
       });
+
       describe('when the string contains for "who"', () => {
         describe('when the string only contains "who"', () => {
           it('should return a string containing "is who"', () => {
@@ -56,6 +65,7 @@ describe('question', () => {
             expect(/.*is.+who.*/i.test(output)).toBe(true);
           });
         });
+
         describe('when the string also contains "favorite"', () => {
           it('should return a string containing "my favorite"', () => {
             const output = test.subject('Who is your favorite movie star?');
@@ -63,6 +73,7 @@ describe('question', () => {
           });
         });
       });
+
       describe('when the string contains "where"', () => {
         describe('when the string only contains "where"', () => {
           it('should return a string containing "house"', () => {
@@ -70,6 +81,7 @@ describe('question', () => {
             expect(/.*house.*/i.test(output)).toBe(true);
           });
         });
+
         describe('when the string also contains "favorite"', () => {
           it('should return a string containing "my favorite place"', () => {
             const output = test.subject('Where is your favorite place to study?');
@@ -77,6 +89,7 @@ describe('question', () => {
           });
         });
       });
+
       describe('when the string is a yes or no question', () => {
         describe('when the string contains "is", "do", "does", "are" & "will"', () => {
           it('should return a string containing "yes" or "no"', () => {
